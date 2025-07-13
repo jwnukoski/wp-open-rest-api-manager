@@ -20,4 +20,6 @@
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-// Include your custom code here.
+
+// Settings page
+require_once plugin_dir_path( __FILE__ ) . 'settings/index.php';
