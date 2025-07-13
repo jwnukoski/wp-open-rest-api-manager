@@ -1,4 +1,5 @@
 <?php
+namespace OpenRestApiManager;
 /**
  * Open REST API Manager
  *
