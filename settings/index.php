@@ -1,6 +1,14 @@
 <?php
 // ...existing code...
 
+// Wrap the call to wp_get_current_user() inside the 'init' action hook
+add_action('init', function() {
+    $current_user = wp_get_current_user() ?? null;
+    $request = new WP_REST_Request( 'GET', '/wp/v2/posts' , [$current_user]);
+    $response = rest_do_request( $request );
+    var_dump($response);
+});
+
 // Add settings page to admin menu
 add_action('admin_menu', function() {
     add_options_page(
@@ -18,7 +26,7 @@ add_action('admin_init', function() {
     add_settings_section(
         'orama_main_section',
         'Main Settings',
-        null,
+        function() {}, // Provide an empty callback
         'open-rest-api-manager'
     );
     add_settings_field(
